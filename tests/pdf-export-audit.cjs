@@ -11,7 +11,8 @@ const { chromium } = require('playwright');
     await page.waitForSelector('[data-mock] .choices button');
     const open = async (kind) => {
       const pending = page.waitForEvent('popup');
-      await page.locator('[onclick="exportMockPdf(\'' + kind + '\')"]').click();
+      const label = { questions: '問題のみPDF', answers: '解答・解説PDF', combined: '問題＋解答PDF' }[kind];
+      await page.getByRole('button', { name: label }).click();
       const popup = await pending;
       await popup.waitForLoadState('domcontentloaded');
       const text = await popup.locator('body').innerText();
