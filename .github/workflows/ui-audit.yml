@@ -18,9 +18,6 @@ jobs:
       - name: Install Playwright
         run: npm install --no-save playwright
         timeout-minutes: 5
-      - name: Install Chromium dependencies
-        run: npx playwright install-deps chromium
-        timeout-minutes: 10
       - name: Install Chromium
         run: npx playwright install chromium
         timeout-minutes: 5
