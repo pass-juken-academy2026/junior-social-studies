@@ -8,7 +8,7 @@ const { chromium } = require('playwright');
     await page.goto('http://127.0.0.1:4173/index.html');
     await page.click('[data-tab="6"]');
     await page.click('[data-start]');
-    await page.waitForSelector('[data-mock] .choices button');
+    await page.waitForSelector('[data-mock] .answer');
     const open = async (kind) => {
       const pending = page.waitForEvent('popup');
       const label = { questions: '問題のみPDF', answers: '解答・解説PDF', combined: '問題＋解答PDF' }[kind];
